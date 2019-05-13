@@ -101,6 +101,11 @@ public class OperarBig {
         return result;
     }
 
+    /**
+     * Fuente: http://chuwiki.chuidiang.org/index.php?title=Descomposici%C3%B3n_en_factores_primos
+     * @param valor
+     * @return 
+     */
     public static LinkedList<String> factoresPrimos(String valor) {
 
         // Se empieza probando como posible factor primo el 2.
