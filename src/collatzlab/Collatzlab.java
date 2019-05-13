@@ -26,7 +26,7 @@ public class Collatzlab {
         
         }
         else{
-            //seguridad git
+            //seguridad git 
             c=new Collatz("");
             c.puertas("66","1");
         }
