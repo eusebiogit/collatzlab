@@ -27,7 +27,7 @@ public class Collatzlab {
         }
         else{
             c=new Collatz("");
-            c.puertas("27","1");
+            c.puertas("66","1");
         }
         
         
