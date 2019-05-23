@@ -1,4 +1,4 @@
-package collatzlab;
+package dominio;
 
 import Operarlab.OperarBig;
 import java.math.BigInteger;
@@ -25,14 +25,17 @@ public class Collatz {
         this(num + "");
     }
 
-    public void run() {
-        ejecutar(this.num);
-        System.out.println("ramas: " + this.ramas);
+    public void run(boolean v) {
+        if ((boolean)OperarBig.operar(this.num+">0")) {
+            ejecutar(this.num, v);
+        }
     }
 
-    public void ejecutar(String num) {
-        System.out.println(num);
-        System.out.println();
+    public void ejecutar(String num, boolean v) {
+        if (v) {
+            System.out.println(num);
+            System.out.println();
+        }
         while ((boolean) OperarBig.operar(num + "!=1")) {
             if (OperarBig.par(num)) {
                 num = ((BigInteger) OperarBig.operar(num + "/2")) + "";
@@ -40,10 +43,11 @@ public class Collatz {
                 this.ramas++;
                 num = ((BigInteger) (OperarBig.operar((BigInteger) OperarBig.operar(num + "*3") + "+1"))) + "";
             }
-            System.out.println(num);
-            System.out.println();
+            if (v) {
+                System.out.println(num);
+                System.out.println();
+            }
         }
-
     }
 
     /**
@@ -54,22 +58,21 @@ public class Collatz {
     public int puertas(String num, String max) {
         int puertas = 0;
         String aux = "";
-        int c=0;
-            while ((Boolean) OperarBig.operar(max + ">0")) {
-                c++;
-                if(c%10000==0){
-                    System.out.println("N: "+num);
-                }
-                
-                
-                aux=OperarBig.operar(num+"-1")+"";
-                if((Boolean)OperarBig.operar(OperarBig.operar(aux+"%3")+"=0")){
-                    max = OperarBig.operar(max + "-1") + "";
-                    aux=OperarBig.operar(aux+"/3")+"";
-                    System.out.println(aux+" -> "+num);
-                }
-                    num=OperarBig.operar(num+"*2")+"";
+        int c = 0;
+        while ((Boolean) OperarBig.operar(max + ">0")) {
+            c++;
+            if (c % 10000 == 0) {
+                System.out.println("N: " + num);
             }
+
+            aux = OperarBig.operar(num + "-1") + "";
+            if ((Boolean) OperarBig.operar(OperarBig.operar(aux + "%3") + "=0")) {
+                max = OperarBig.operar(max + "-1") + "";
+                aux = OperarBig.operar(aux + "/3") + "";
+                System.out.println(aux + " -> " + num);
+            }
+            num = OperarBig.operar(num + "*2") + "";
+        }
         return puertas;
     }
 
