@@ -16,7 +16,7 @@ public class Collatz {
     public Collatz(String num) {
         this.num = num;
         this.ramas = 1;
-        this.camino="";
+        this.camino = "";
     }
 
     public Collatz(int num) {
@@ -47,22 +47,18 @@ public class Collatz {
                 num = ((BigInteger) (OperarBig.operar((BigInteger) OperarBig.operar(num + "*3") + "+1"))) + "";
             }
             if (v) {
-                System.out.println(num);
+                System.out.println(num + "    "+OperarBig.sumaDigitos(num));
                 System.out.println();
             }
         }
-        camino += " => "+ num;
-        
+        camino += " => " + num;
+
     }
-    
-    
-    
-    
-    
-    
+
+
 
     public String getCamino() {
-        if(camino==""){
+        if (camino == "") {
             this.run(false);
         }
         return this.camino;
@@ -90,27 +86,6 @@ public class Collatz {
         }
         return puertas;
     }
-    
-    public int puertasRamasExtremas(String max) {
-        int puertas = 0;
-        String aux = "";
-        int c = 0;
-        while ((Boolean) OperarBig.operar(max + ">0")) {
-            c++;
-            aux = OperarBig.operar(num + "-1") + "";
-            if (!OperarBig.par(aux) && (Boolean) OperarBig.operar(OperarBig.operar(aux + "%9") + "=0")) {
-                max = OperarBig.operar(max + "-1") + "";
-                aux = OperarBig.operar(aux + "/3") + "";
-                System.out.println(aux + " -> " + num);
-                puertas++;
-            }
-            num = OperarBig.operar(num + "*2") + "";
-        }
-        return puertas;
-        
-    }
-    
-    
 
     /**
      * Devuelve las ramas de la sucesión calculada

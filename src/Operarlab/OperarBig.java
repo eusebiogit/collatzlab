@@ -101,10 +101,31 @@ public class OperarBig {
         return result;
     }
 
+    public static String sumaDigitos(String num) {
+        return sumaDigitos(new BigInteger(num)) + "";
+    }
+
+    public static BigInteger sumaDigitos(BigInteger num) {
+        BigInteger resultado = new BigInteger(0 + "");
+        do {
+            while (num.compareTo(new BigInteger(0 + "")) > 0) {
+                resultado = resultado.add(num.mod(new BigInteger(10 + "")));
+                num = num.divide(new BigInteger(10 + ""));
+            }
+            if (resultado.compareTo(new BigInteger(9 + "")) > 0) {
+                num = resultado;
+                resultado = new BigInteger(0 + "");
+            }
+        } while (num.compareTo(new BigInteger(9 + "")) > 0);
+        return resultado;
+    }
+
     /**
-     * Fuente: http://chuwiki.chuidiang.org/index.php?title=Descomposici%C3%B3n_en_factores_primos
+     * Fuente:
+     * http://chuwiki.chuidiang.org/index.php?title=Descomposici%C3%B3n_en_factores_primos
+     *
      * @param valor
-     * @return 
+     * @return
      */
     public static LinkedList<String> factoresPrimos(String valor) {
 
